@@ -120,19 +120,25 @@
 {/if}
 
 			{box_row icon="img/dead.gif" label="Status:"}
+			{if !$ticket.verifierid || $ticket.verifierid && $ticket.state != $smarty.const.RT_VERIFIED}
 				<SELECT SIZE="1" name="message[state]" id="state" {tip text="Select status" trigger="state"}>
 					{if $group_action}
-					<option value="-1"{if $message.state == -1} selected{/if}>{trans("- no changes -")}</option>
+						<option value="-1"{if $message.state == -1} selected{/if}>{trans("- no changes -")}</option>
 					{/if}
 					{foreach $_RT_STATES as $stateidx => $state}
-					<OPTION value="{$stateidx}"{if $message.state == $stateidx} selected{/if}>{$state.label}</OPTION>
+						<option value="{$stateidx}"{if $message.state == $stateidx} selected{/if}{if $ticket.verifierid && $ticket.verifierid != $layout.logid && $stateidx == $smarty.const.RT_RESOLVED} disabled{/if}>{$state.label}</option>
 					{/foreach}
 				</SELECT>
 				&nbsp;
-				<label>
-					<INPUT type="checkbox" name="message[resolve]" id="resolve" value="{$smarty.const.RT_RESOLVED}"{if isset($message.resolve) || $message.state == $smarty.const.RT_RESOLVED} CHECKED{/if}{tip trigger="resolve"}>
-					{trans("resolve ticket")}
-				</label>
+					{if !$ticket.verifierid || $ticket.verifierid == $layout.logid}
+						<label>
+							<INPUT type="checkbox" name="message[resolve]" id="resolve" value="{$smarty.const.RT_RESOLVED}"{if isset($message.resolve) || $message.state == $smarty.const.RT_RESOLVED} CHECKED{/if}{tip trigger="resolve"}>
+							{trans("resolve ticket")}
+						</label>
+					{/if}
+				{else}
+					<input name="message[state]" value="{$smarty.const.RT_VERIFIED}" hidden> {$_RT_STATES[$ticket.state].label}
+				{/if}
 			{/box_row}
 
 			{box_row icon="img/desc.gif" label="Cause:"}
