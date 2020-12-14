@@ -80,16 +80,22 @@
 			{trans("Status:")}
 		</TD>
 		<TD>
-			<SELECT SIZE="1" name="note[state]" id="state" {tip text="Select status" trigger="state"}>
-				{foreach $_RT_STATES as $stateidx => $state}
-				<OPTION value="{$stateidx}"{if $note.state == $stateidx} selected{/if}>{$state.label}</OPTION>
-				{/foreach}
-			</SELECT>
-			&nbsp;
-			<label>
-				<INPUT type="checkbox" name="note[resolve]" id="resolve" value="{$smarty.const.RT_RESOLVED}"{if isset($note.resolve) || $note.state == $smarty.const.RT_RESOLVED} CHECKED{/if}{tip trigger="resolve"}>
-				{trans("resolve ticket")}
-			</label>
+			{if !$ticket.verifierid || $ticket.verifierid && $ticket.state != $smarty.const.RT_VERIFIED}
+				<SELECT SIZE="1" name="note[state]" id="state" {tip text="Select status" trigger="state"}>
+					{foreach $_RT_STATES as $stateidx => $state}
+						<OPTION value="{$stateidx}"{if $note.state == $stateidx} selected{/if}{if $ticket.verifierid && $ticket.verifierid != $layout.logid && $stateidx == $smarty.const.RT_RESOLVED} disabled{/if}>{$state.label}</OPTION>
+					{/foreach}
+				</SELECT>
+				&nbsp;
+				{if !$ticket.verifierid || $ticket.verifierid == $layout.logid}
+					<label>
+						<INPUT type="checkbox" name="note[resolve]" id="resolve" value="{$smarty.const.RT_RESOLVED}"{if isset($note.resolve) || $note.state == $smarty.const.RT_RESOLVED} CHECKED{/if}{tip trigger="resolve"}>
+						{trans("resolve ticket")}
+					</label>
+				{/if}
+			{else}
+				<input name="message[state]" value="{$smarty.const.RT_VERIFIED}" hidden> {$_RT_STATES[$ticket.state].label}
+			{/if}
 		</TD>
 	</TR>
 	<TR>
