@@ -216,6 +216,12 @@ $layout['url'] = 'http' . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
     . $_SERVER['HTTP_HOST']
     . substr($_SERVER['REQUEST_URI'], 0, strrpos($_SERVER['REQUEST_URI'], '/') + 1);
 
+$il = $LMS->ReplaceInstanceLabelSymbols(ConfigHelper::getConfig('phpui.instance_label'));
+
+if (!empty($il)) {
+    $SMARTY->assign(instance_label, $il);
+}
+
 if (!$api) {
     $SMARTY->assignByRef('layout', $layout);
 }

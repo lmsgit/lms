@@ -2579,6 +2579,24 @@ class LMS
         return $uiid;
     }
 
+    public function ReplaceInstanceLabelSymbols($text)
+    {
+        $search = array(
+            '%hostname',
+            '%dbversion',
+            '%phpversion',
+            '%ipaddr',
+        );
+        $replace = array(
+            gethostname(),
+            $this->DB->GetVersion(),
+            phpversion(),
+            $_SERVER['SERVER_ADDR'],
+        );
+
+        return str_replace($search, $replace, $text);
+    }
+
     public function CheckUpdates($force = false)
     {
         $uiid = $this->GetUniqueInstallationID();
