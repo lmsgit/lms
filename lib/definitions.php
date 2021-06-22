@@ -408,67 +408,67 @@ define('RT_TYPE_NO_SERVICE', 13);
 
 $RT_TYPES = array(
     RT_TYPE_OTHER => array(
-        'label' => 'other',
+        'label' => trans('other'),
         'class' => 'lms-ui-rt-ticket-type-other',
         'name' => 'RT_TYPE_OTHER'
     ),
     RT_TYPE_OFFER => array(
-        'label' => 'offer',
+        'label' => trans('offer'),
         'class' => 'lms-ui-rt-ticket-type-offer',
         'name' => 'RT_TYPE_OFFER'
     ),
     RT_TYPE_DOCS => array(
-        'label' => 'documents',
+        'label' => trans('documents'),
         'class' => 'lms-ui-rt-ticket-type-docs',
         'name' => 'RT_TYPE_DOCS'
     ),
     RT_TYPE_FAULT => array(
-        'label' => 'fault',
+        'label' => trans('fault'),
         'class' => 'lms-ui-rt-ticket-type-fault',
         'name' => 'RT_TYPE_FAULT'
     ),
     RT_TYPE_INST => array(
-        'label' => 'installation',
+        'label' => trans('installation'),
         'class' => 'lms-ui-rt-ticket-type-inst',
         'name' => 'RT_TYPE_INST'
     ),
     RT_TYPE_MOD => array(
-        'label' => 'modification',
+        'label' => trans('modification'),
         'class' => 'lms-ui-rt-ticket-type-mod',
         'name' => 'RT_TYPE_MOD'
     ),
     RT_TYPE_CONF => array(
-        'label' => '<!rt-type>configuration',
+        'label' => trans('<!rt-type>configuration'),
         'class' => 'lms-ui-rt-ticket-type-conf',
         'name' => 'RT_TYPE_CONF'
     ),
     RT_TYPE_START => array(
-        'label' => 'service start',
+        'label' => trans('service start'),
         'class' => 'lms-ui-rt-ticket-type-start',
         'name' => 'RT_TYPE_START'
     ),
     RT_TYPE_STOP => array(
-        'label' => 'service hold',
+        'label' => trans('service hold'),
         'class' => 'lms-ui-rt-ticket-type-stop',
         'name' => 'RT_TYPE_STOP'
     ),
     RT_TYPE_TRANSFER => array(
-      'label' => 'service transfer',
+      'label' => trans('service transfer'),
       'class' => 'lms-ui-rt-ticket-type-transfer',
       'name' => 'RT_TYPE_TRANSFER'
     ),
     RT_TYPE_REMOVE => array(
-        'label' => 'deinstallation',
+        'label' => trans('deinstallation'),
         'class' => 'lms-ui-rt-ticket-type-remove',
         'name' => 'RT_TYPE_REMOVE'
     ),
     RT_TYPE_PAYMENT => array(
-        'label' => 'payment',
+        'label' => trans('payment'),
         'class' => 'lms-ui-rt-ticket-type-payment',
         'name' => 'RT_TYPE_PAYMENT'
     ),
     RT_TYPE_NO_SERVICE => array(
-        'label' => 'no service',
+        'label' => trans('no service'),
         'class' => 'lms-ui-rt-ticket-type-no-service',
         'name' => 'RT_TYPE_NO_SERVICE'
     ),
