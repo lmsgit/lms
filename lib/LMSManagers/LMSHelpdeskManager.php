@@ -1629,7 +1629,7 @@ class LMSHelpdeskManager extends LMSManager implements LMSHelpdeskManagerInterfa
         }
 
         if ($ticket['type'] != $props['type'] && isset($props['type'])) {
-            $notes[] = trans('Ticket type has been set to $a.', $RT_TYPES[$props['type']]['label']);
+            $notes[] = trans('Ticket type has been set to $a.', trans($RT_TYPES[$props['type']]['label']));
             $type = $type | RTMESSAGE_TYPE_CHANGE;
         } else {
             $props['type'] = $ticket['type'];
